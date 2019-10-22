@@ -1,18 +1,60 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <div class="col-lg-6 col-md-12 offset-md-3">
+        <div class="mt60" />
+        <input-component
+          v-model="nome"
+          name="nome"
+          placeholder="Preencha com seu ome completo"
+          label="Component de input simples"
+        />
+        <text-area-component
+          v-model="mensagem"
+          name="mensagem"
+          placeholder="Preencha com seu ome completo"
+          label="Component de input simples"
+        />
+        <select-component
+          v-model="assunto"
+          name="assunto"
+          placeholder="Preencha com seu ome completo"
+          label="Component de input simples"
+          empty-message="Eita... Parece que não temos essa opção"
+          :options="assuntos"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import InputComponent from '@/components/InputComponent.vue'
+import TextAreaComponent from '@/components/TextAreaComponent.vue'
+import SelectComponent from '@/components/SelectComponent.vue'
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
-    HelloWorld
+    InputComponent,
+    TextAreaComponent,
+    SelectComponent
+  },
+  data: () => {
+    return {
+      nome: '',
+      mensagem: '',
+      assunto: '',
+      assuntos: ['Assunto 01', 'Assunto 02', 'Assunto 03', 'Assunto 04']
+    }
+  },
+  watch: {
+    nome (e) {
+      console.log('nome', e)
+    },
+    mensagem (e) {
+      console.log('mensagem', e)
+    }
   }
 }
 </script>
